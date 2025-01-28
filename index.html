@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@heroicons/react@1.0.6/outline/esm/index.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Compress File</title>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div
+      class="max-w-md w-full bg-white rounded-lg shadow-xl p-6 transform transition duration-500 hover:scale-105"
+    >
+      <h1
+        class="text-3xl font-bold text-gray-800 mb-6 text-center animate__animated animate__fadeIn animate__delay-1s"
+      >
+        🎥 Compress Your Files 🎥
+      </h1>
+
+      <!-- Compress Image Form -->
+      <form
+        id="imageUploadForm"
+        method="post"
+        enctype="multipart/form-data"
+        class="space-y-4"
+      >
+        <div class="animate__animated animate__fadeIn animate__delay-2s">
+          <label for="file" class="block text-sm font-medium text-gray-700">
+            Choose an image:
+          </label>
+          <input
+            type="file"
+            name="file"
+            id="file"
+            accept="image/*"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-200"
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:scale-105"
+        >
+          Compress Image
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="my-6 border-t border-gray-300"></div>
+
+      <!-- Compress Video Form -->
+      <form
+        id="videoUploadForm"
+        method="post"
+        enctype="multipart/form-data"
+        class="space-y-4"
+      >
+        <div class="animate__animated animate__fadeIn animate__delay-3s">
+          <label for="file" class="block text-sm font-medium text-gray-700">
+            Choose a video:
+          </label>
+          <input
+            type="file"
+            name="file"
+            id="file"
+            accept="video/*"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm transition duration-200"
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-green-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105"
+        >
+          Compress Video
+        </button>
+      </form>
+
+      <!-- Footer -->
+      <div
+        class="text-center mt-6 text-sm text-gray-500 animate__animated animate__fadeIn animate__delay-4s"
+      >
+        Feito com
+        <span class="text-red-500 animate-pulse">&#10084;</span>
+        por <span class="font-bold text-gray-700">Thony</span>
+      </div>
+    </div>
+
+    <script src="backend.js"></script>
+  </body>
+</html>
