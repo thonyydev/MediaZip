@@ -3,23 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/LOGO.png" type="image/png" />
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/@heroicons/react@1.0.6/outline/esm/index.js"></script>
     <link rel="stylesheet" href="styles.css" />
-    <title>Compress File</title>
+    <script src="https://cdn.jsdelivr.net/npm/@heroicons/react@1.0.6/outline/esm/index.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <title>MediaZip - Comprimir Arquivos</title>
+    <style>
+      .progress-bar {
+        transition: width 0.5s ease-in-out;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
   </head>
   <body class="bg-gray-100 min-h-screen flex items-center justify-center">
     <div
       class="max-w-md w-full bg-white rounded-lg shadow-xl p-6 transform transition duration-500 hover:scale-105"
     >
       <h1
-        class="text-3xl font-bold text-gray-800 mb-6 text-center animate__animated animate__fadeIn animate__delay-1s"
+        class="text-3xl font-bold text-gray-800 mb-2 text-center animate__animated animate__fadeIn animate__delay-0s"
       >
-        🎥 Compress Your Files 🎥
+        MediaZip
       </h1>
+      <p
+        class="text-sm text-gray-600 text-center animate__animated animate__fadeIn animate__delay-0s"
+      >
+        Comprima Seus Arquivos
+      </p>
+
+      <!-- Status Section -->
+      <div id="statusContainer" class="hidden mb-6 space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-medium text-gray-700">Progresso:</span>
+          <span id="progressPercentage" class="text-sm text-gray-600">0%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+          <div
+            id="progressBar"
+            class="progress-bar bg-indigo-600 h-2.5 rounded-full"
+            style="width: 0%"
+          ></div>
+        </div>
+        <div id="statusMessage" class="text-sm text-center"></div>
+        <div class="flex justify-center mt-4">
+          <a
+            id="downloadLink"
+            href="#"
+            class="hidden bg-green-600 text-white py-2 px-6 rounded-lg shadow-md hover:bg-green-700 transition duration-300 text-center"
+          >
+            Download do Arquivo
+          </a>
+        </div>
+      </div>
 
       <!-- Compress Image Form -->
       <form
@@ -28,23 +71,27 @@
         enctype="multipart/form-data"
         class="space-y-4"
       >
-        <div class="animate__animated animate__fadeIn animate__delay-2s">
-          <label for="file" class="block text-sm font-medium text-gray-700">
-            Choose an image:
+        <div class="animate__animated animate__fadeIn animate__delay-1s">
+          <label
+            for="imageFile"
+            class="block text-sm font-medium text-gray-700"
+          >
+            Escolha uma imagem:
           </label>
           <input
             type="file"
             name="file"
-            id="file"
+            id="imageFile"
             accept="image/*"
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-200"
+            required
           />
         </div>
         <button
           type="submit"
-          class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 ease-in-out transform hover:scale-105"
+          class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-indigo-700 transition duration-300 ease-in-out"
         >
-          Compress Image
+          Comprimir Imagem
         </button>
       </form>
 
@@ -58,35 +105,203 @@
         enctype="multipart/form-data"
         class="space-y-4"
       >
-        <div class="animate__animated animate__fadeIn animate__delay-3s">
-          <label for="file" class="block text-sm font-medium text-gray-700">
-            Choose a video:
+        <div class="animate__animated animate__fadeIn animate__delay-1s">
+          <label
+            for="videoFile"
+            class="block text-sm font-medium text-gray-700"
+          >
+            Escolha um vídeo:
           </label>
           <input
             type="file"
             name="file"
-            id="file"
+            id="videoFile"
             accept="video/*"
             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm transition duration-200"
+            required
           />
         </div>
         <button
           type="submit"
-          class="w-full bg-green-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105"
+          class="w-full bg-green-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-green-700 transition duration-300 ease-in-out"
         >
-          Compress Video
+          Comprimir Vídeo
         </button>
       </form>
 
+      <!-- Botão para Termos de Serviço -->
+      <div class="mt-6 text-center">
+        <a
+          href="termosdeserviço.html"
+          class="inline-block bg-gray-700 text-white py-2 px-6 rounded-lg shadow-md hover:bg-gray-800 transition duration-300"
+        >
+          📜 Termos de Serviço
+        </a>
+      </div>
+
       <!-- Footer -->
       <div
-        class="text-center mt-6 text-sm text-gray-500 animate__animated animate__fadeIn animate__delay-4s"
+        class="text-center mt-6 text-sm text-gray-500 animate__animated animate__fadeIn animate__delay-1s"
       >
         Feito com
         <span class="text-red-500 animate-pulse">&#10084;</span>
         por <span class="font-bold text-gray-700">Thony</span>
       </div>
     </div>
+
+    <script>
+      const API_BASE_URL = "http://localhost:8080";
+      const compressBtns = document.querySelectorAll(".compress-btn");
+      const imageFileInput = document.getElementById("imageFile");
+      const videoFileInput = document.getElementById("videoFile");
+      const forms = document.querySelectorAll("form");
+      const statusContainer = document.getElementById("statusContainer");
+      const progressBar = document.getElementById("progressBar");
+      const progressPercentage = document.getElementById("progressPercentage");
+      const statusMessage = document.getElementById("statusMessage");
+      const downloadLink = document.getElementById("downloadLink");
+
+      async function handleFormSubmit(event, type) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        const currentFileInput =
+          type === "image" ? imageFileInput : videoFileInput;
+
+        downloadLink.classList.add("hidden");
+
+        const fileInput =
+          type === "image"
+            ? document.getElementById("imageFile")
+            : document.getElementById("videoFile");
+
+        if (!fileInput.files[0]) {
+          showError("Por favor, selecione um arquivo");
+          return;
+        }
+
+        try {
+          form.querySelector("button").disabled = true;
+          statusContainer.classList.remove("hidden");
+          statusMessage.textContent = "Enviando arquivo...";
+
+          // Desabilitar elementos
+          compressBtns.forEach((btn) => (btn.disabled = true));
+          imageFileInput.disabled = true;
+          videoFileInput.disabled = true;
+          forms.forEach((form) => (form.style.opacity = "0.6")); // Feedback visual
+
+          // Limpar arquivo selecionado
+          currentFileInput.value = "";
+
+          const response = await fetch(`${API_BASE_URL}/compress/${type}`, {
+            method: "POST",
+            body: formData,
+          });
+
+          const responseText = await response.text();
+          if (!response.ok) {
+            throw new Error(responseText || "Erro no servidor");
+          }
+
+          const { id, status_url } = JSON.parse(responseText);
+          statusMessage.textContent = "Processando...";
+          pollJobStatus(id);
+        } catch (error) {
+          let errorMsg = "Falha na comunicação com o servidor";
+          try {
+            const errorData = JSON.parse(error.message);
+            errorMsg = errorData.error || errorMsg;
+          } catch {
+            errorMsg = error.message || errorMsg;
+          }
+          showError(errorMsg);
+        } finally {
+          form.querySelector("button").disabled = false;
+        }
+      }
+
+      // Adicionar event listeners para os inputs de arquivo
+      imageFileInput.addEventListener("change", () => {
+        if (imageFileInput.files.length > 0) {
+          downloadLink.classList.add("hidden");
+        }
+      });
+
+      videoFileInput.addEventListener("change", () => {
+        if (videoFileInput.files.length > 0) {
+          downloadLink.classList.add("hidden");
+        }
+      });
+
+      async function pollJobStatus(jobId) {
+        const checkStatus = async () => {
+          try {
+            const response = await fetch(`${API_BASE_URL}/status/${jobId}`);
+            const data = await response.json();
+
+            updateProgress(data.progress);
+
+            if (data.status === "completed") {
+              statusMessage.textContent = "Compressão concluída!";
+              downloadLink.href = `${API_BASE_URL}${data.download_url}`;
+              downloadLink.classList.remove("hidden");
+
+              // Reabilitar elementos
+              compressBtns.forEach((btn) => (btn.disabled = false));
+              imageFileInput.disabled = false;
+              videoFileInput.disabled = false;
+              forms.forEach((form) => (form.style.opacity = "1"));
+
+              // Força o download em nova guia
+              downloadLink.onclick = (e) => {
+                e.preventDefault();
+                window.open(downloadLink.href, "_blank");
+
+                // Resetar interface
+                statusContainer.classList.add("hidden");
+                progressBar.style.width = "0%";
+                progressPercentage.textContent = "0%";
+                statusMessage.textContent = "";
+                downloadLink.classList.add("hidden");
+              };
+
+              clearInterval(interval);
+            } else if (data.status === "failed") {
+              showError(data.error || "Erro na compressão");
+              clearInterval(interval);
+            }
+          } catch (error) {
+            showError("Erro ao verificar status");
+            clearInterval(interval);
+          }
+        };
+
+        const interval = setInterval(checkStatus, 2000);
+        checkStatus(); // Initial check
+      }
+
+      function updateProgress(progress) {
+        progressBar.style.width = `${progress}%`;
+        progressPercentage.textContent = `${progress}%`;
+      }
+
+      function showError(message) {
+        statusMessage.textContent = message;
+        statusMessage.classList.add("text-red-500");
+        setTimeout(() => {
+          statusMessage.classList.remove("text-red-500");
+        }, 5000);
+      }
+
+      // Event Listeners
+      document
+        .getElementById("imageUploadForm")
+        .addEventListener("submit", (e) => handleFormSubmit(e, "image"));
+      document
+        .getElementById("videoUploadForm")
+        .addEventListener("submit", (e) => handleFormSubmit(e, "video"));
+    </script>
 
     <script src="backend.js"></script>
   </body>
