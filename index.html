@@ -149,7 +149,7 @@
     </div>
 
     <script>
-      const API_BASE_URL = "http://localhost:8080";
+      const API_BASE_URL = window.APP_CONFIG.API_BASE_URL;
       const compressBtns = document.querySelectorAll(".compress-btn");
       const imageFileInput = document.getElementById("imageFile");
       const videoFileInput = document.getElementById("videoFile");
@@ -301,7 +301,5 @@
         .getElementById("videoUploadForm")
         .addEventListener("submit", (e) => handleFormSubmit(e, "video"));
     </script>
-
-    <script src="backend.js"></script>
   </body>
 </html>

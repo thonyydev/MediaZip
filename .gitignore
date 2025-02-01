@@ -1,3 +1,2 @@
 squarecloud.app
-.env
-backend.js
+config.js
